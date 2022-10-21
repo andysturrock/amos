@@ -22,8 +22,11 @@ function ProfileContent() {
         ...loginRequest,
         account: accounts[0],
       });
-      
+    
+    console.log(`accessToken = ${authenticationResult.accessToken}`);
     const response = await callMsGraph(authenticationResult.accessToken);
+    console.log(`response = ${response}`);
+    console.log(`response = ${JSON.stringify(response)}`);
     setGraphData(response);
   }
 

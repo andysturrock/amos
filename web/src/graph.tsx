@@ -15,7 +15,15 @@ export async function callMsGraph(accessToken: any) {
     headers: headers
   };
 
-  return fetch(graphConfig.graphMeEndpoint, options)
-    .then(response => response.json())
-    .catch(error => console.log(error));
+  try {
+    const response = await fetch(graphConfig.graphMeEndpoint, options);
+    if(!response) {
+      throw "Null response";
+    }
+    return response.json();
+  }
+  catch (e) {
+    console.error(e);
+    return {};
+  }
 }
