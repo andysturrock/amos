@@ -23,7 +23,8 @@ export const msalConfig = {
   system: {	
     loggerOptions: {	
       loggerCallback: (level:LogLevel, message:string, containsPii:boolean) => {	
-        if(containsPii) {		
+        if(containsPii) {
+          console.log("log message contains PII, skipping...");
           return;		
         }		
         switch(level) {
@@ -62,5 +63,5 @@ export const loginRequest = {
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
  */
 export const graphConfig = {
-  graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me"
+  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
 };

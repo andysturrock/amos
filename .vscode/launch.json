@@ -3,6 +3,7 @@
     {
       "name": "Launch Chrome",
       "request": "launch",
+      "sourceMaps": true,
       "type": "chrome",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
