@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import {loginRequest} from './authConfig';
 import {callMsGraph} from './graph';
 import {ProfileData} from './components/ProfileData';
+import {AppRouter} from './components/AppRouter';
 
 
 /**
@@ -49,15 +50,18 @@ function ProfileContent() {
  */
 function MainContent() {
   return (
-    <div className="App">
-      <AuthenticatedTemplate>
-        <ProfileContent />
-      </AuthenticatedTemplate>
+    <>
+      <AppRouter/>
+      <div className="App">
+        <AuthenticatedTemplate>
+          <ProfileContent />
+        </AuthenticatedTemplate>
 
-      <UnauthenticatedTemplate>
-        <h5 className="card-title">Please sign-in to see your profile information.</h5>
-      </UnauthenticatedTemplate>
-    </div>
+        <UnauthenticatedTemplate>
+          <h5 className="card-title">Please sign-in to see your profile information.</h5>
+        </UnauthenticatedTemplate>
+      </div>
+    </>
   );
 }
 

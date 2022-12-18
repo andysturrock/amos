@@ -4,10 +4,14 @@
  */
 
 import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import {LinkContainer} from 'react-router-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 import {useIsAuthenticated} from '@azure/msal-react';
 import {SignInButton} from './SignInButton';
 import {SignOutButton} from './SignOutButton';
+
 
 // Really weird this is missing from @types/react
 declare global {
@@ -28,16 +32,26 @@ export function PageLayout(props:any) {
 
   return (
     <>
-      <Navbar bg="primary" variant="dark" className="navbarStyle">
-        <a className="navbar-brand" href="/">
-                    Microsoft Identity Platform
-        </a>
+      <Navbar bg="primary" variant="dark" fixed="top">
+        <Container>
+          <Navbar.Brand href="/">AMOS</Navbar.Brand>
+          {isAuthenticated ? 
+            <Nav className="me-auto">
+              {/* <LinkContainer to="/newcase"> */}
+              <Nav.Link href="/newcase">New Case</Nav.Link>
+              {/* </LinkContainer> */}
+              <Nav.Link href="/transfercase">Transfer Case</Nav.Link>
+              <Nav.Link href="/viewcases">View Cases</Nav.Link>
+            </Nav>
+            :
+            <Nav/>}
+        </Container>
         <div className="collapse navbar-collapse justify-content-end">
           {isAuthenticated ? <SignOutButton /> : <SignInButton />}
         </div>
       </Navbar>
       <h5>
-        <center>Welcome to the Microsoft Authentication Library For Javascript - React Quickstart</center>
+        <center>Welcome to AMOS</center>
       </h5>
       <br />
       <br />
